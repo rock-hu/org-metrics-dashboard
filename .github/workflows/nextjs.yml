@@ -35,7 +35,7 @@ jobs:
         id: metrics
         run: |
           cd backend
-          npm i
+          npm i --force
           npm run dev
       - name: Detect package manager
         id: detect-package-manager
