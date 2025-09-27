@@ -1,6 +1,6 @@
 ---
 # Organization to pull metrics from
-organization: 'github-community-projects'
+organization: 'rock-hu'
 
 # Start date to pull metrics from
 since: '2023-01-01'
