@@ -13,7 +13,7 @@ export const addRepositoriesToResult: Fetcher = async (
     organization: Organization;
   }>(
     `
-  query ($cursor: String, $organization: String!) {
+  query ($cursor: String, $organization: String!) 
     organization(login:$organization) {
       repositories(privacy:PUBLIC, first:100, isFork:false, isArchived:false, after: $cursor)
       {
@@ -66,11 +66,18 @@ export const addRepositoriesToResult: Fetcher = async (
     },
   );
 
+  console.log(
+    'organization.organization.repositories:',
+    organization.organization.repositories,
+  );
+
   const filteredRepos = organization.organization.repositories.nodes!.filter(
     (repo) =>
       !(repo?.isArchived && !config.includeArchived) ||
       !(repo.isFork && !config.includeForks),
   ) as Repository[];
+
+  console.log('filteredRepos:', filteredRepos);
 
   return {
     ...result,
